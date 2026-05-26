@@ -2,20 +2,22 @@ package cl.utalca;
 
 public class InventarioLetras {
     private int[] inventario; //Arreglo de 26 espacios
-    private int totalCount;
-    private int nonZeroCount;
+    private int totalCount; //Suma total
+    private int nonZeroCount; //Guardar cant letras
 
-    //Constructor
+    //CONSTRUCTOR
+    //Acepta String
+    //Cuenta las veces que sale una letra
     public InventarioLetras(String data) {
         inventario = new int[26];
         totalCount = 0;
         nonZeroCount = 0;
 
-        String texto = data.toLowerCase();
+        String texto = data.toLowerCase(); //String a minusculas
         for (int i = 0; i < texto.length(); i++) {
             char c = texto.charAt(i);
 
-            if (c >= 'a' && c <= 'z'){
+            if (c >= 'a' && c <= 'z'){ //Acepta de la A a la Z sin contar la Ñ
                 int indice = c - 'a';
                 if (inventario[indice] == 0) {
                     nonZeroCount++;
@@ -26,12 +28,13 @@ public class InventarioLetras {
         }
     }
 
-    private InventarioLetras() {
+    private InventarioLetras() { //Se usa para poder hacer nuevos inventarios
         inventario = new int[26];
         totalCount = 0;
         nonZeroCount = 0;
     }
 
+    //METODOS
     public char encriptarCesar(char letra){
         char c = Character.toLowerCase(letra);
         if (c >= 'a' && c <= 'z'){
